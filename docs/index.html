@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent ID Pioneer Badge — Free Soulbound Badge for Agent ID Holders</title>
+<meta name="description" content="A free, soulbound ERC-721 badge on BNB Chain. Mintable only by wallets that hold an Agent ID (name.ai). One per wallet. No payment — you only pay your own BSC gas.">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: #0b0e14; color: #e8eaf0; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 48px 20px 64px; }
+  h1 { font-size: 34px; margin: 0 0 8px; }
+  h1 span { color: #f0b90b; }
+  .sub { color: #9aa3b8; font-size: 17px; line-height: 1.55; margin: 0 0 28px; }
+  .card { background: #161c2b; border: 1px solid #262f4d; border-radius: 16px; padding: 24px; margin-bottom: 20px; }
+  .card h2 { font-size: 18px; margin: 0 0 12px; }
+  .row { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid #232a3d; font-size: 15px; }
+  .row:last-child { border-bottom: none; }
+  .row .k { color: #9aa3b8; }
+  .row .v { font-weight: 600; text-align: right; word-break: break-all; }
+  .ok { color: #4ade80; }
+  .warn { color: #fbbf24; }
+  .bad { color: #f87171; }
+  button { display: block; width: 100%; padding: 15px 18px; font-size: 17px; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; background: #f0b90b; color: #111; }
+  button:disabled { background: #2a3348; color: #7b8499; cursor: not-allowed; }
+  button.secondary { background: #232a3d; color: #e8eaf0; margin-top: 10px; }
+  #log { white-space: pre-wrap; word-break: break-word; background: #0e1320; border: 1px solid #232a3d; border-radius: 12px; padding: 14px; font-size: 14px; line-height: 1.5; min-height: 52px; color: #c6cddc; }
+  .fine { font-size: 13px; color: #8b93a7; line-height: 1.6; }
+  a { color: #60a5fa; }
+  .badge-img { display: block; width: 180px; height: 180px; margin: 0 auto 20px; border-radius: 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Agent ID <span>Pioneer Badge</span></h1>
+  <p class="sub">A free, soulbound badge for Agent ID holders on BNB Chain.
+  Only wallets that hold an Agent ID (<code>name.ai</code>) can mint one — one badge per wallet,
+  non-transferable, forever. Built for the Binance Agent ID Hackathon.</p>
+
+  <div class="card">
+    <h2>Your status</h2>
+    <div class="row"><span class="k">Wallet</span><span class="v" id="wallet">Not connected</span></div>
+    <div class="row"><span class="k">Network</span><span class="v" id="network">—</span></div>
+    <div class="row"><span class="k">Agent ID held</span><span class="v" id="agentid">—</span></div>
+    <div class="row"><span class="k">Badge held</span><span class="v" id="badge">—</span></div>
+    <div class="row"><span class="k">Badge contract</span><span class="v" id="contract">Not deployed yet</span></div>
+  </div>
+
+  <div class="card">
+    <h2>Mint your free badge</h2>
+    <button id="connectBtn">Connect wallet</button>
+    <button id="mintBtn" class="secondary" disabled>Mint your free Badge</button>
+    <p class="fine" style="margin-top:14px">Minting is <strong>free</strong> — the contract charges nothing.
+    You only pay the BSC network gas fee for your own transaction, and you confirm it yourself in your wallet.
+    The badge is soulbound: it can never be transferred or sold.</p>
+  </div>
+
+  <div class="card">
+    <h2>Activity</h2>
+    <div id="log">Connect your wallet to begin.</div>
+  </div>
+
+  <div class="card">
+    <h2>How it works</h2>
+    <p class="fine">1. Connect your wallet (Binance Wallet or MetaMask) on BNB Chain (chain ID 56).<br>
+    2. The page reads your Agent ID balance on-chain — no sign-in, no QR code, no session stored anywhere.<br>
+    3. If you hold an Agent ID, press “Mint your free Badge” and confirm the transaction in your wallet.<br>
+    4. One badge per wallet. It is soulbound (non-transferable), just like Agent ID itself.</p>
+    <p class="fine">Contract: <span id="contract2">not deployed yet — address will appear here after deployment</span><br>
+    Agent ID contract: <a href="https://bscscan.com/address/0x60b9262456de011f7d15a54cdd8c48baaa8b022f" target="_blank" rel="noopener">0x60b9262456de011f7d15a54cdd8c48baaa8b022f</a> (SPACE ID Agent ID, ERC-721)<br>
+    Source code: <a href="https://github.com/Wahyupurnomoaji21/agent-id-pioneer-badge" target="_blank" rel="noopener">github.com/Wahyupurnomoaji21/agent-id-pioneer-badge</a> (MIT, open source)</p>
+    <p class="fine">No investment advice. No returns are promised — this badge is a free collectible proof of being an Agent ID holder, not an investment.</p>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.0/dist/ethers.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
