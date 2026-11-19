@@ -67,8 +67,11 @@ forge verify-contract <DEPLOYED_ADDRESS> src/AgentIDPioneerBadge.sol:AgentIDPion
    with **at least 30 Agent ID addresses** having interacted with the contract during the
    Submission Period (ends 9 Dec 2026 15:00 WIB).
 
-## Estimated gas (measured, see report)
+## Estimated gas (measured 19 Nov 2026, dry run on BSC mainnet)
 
-Deployment gas is measured by the dry run in step 3. (To be filled in from the dry-run output.)
-A typical ERC-721 of this size deploys for ~2.5–3.5M gas on BSC (~0.001–0.01 BNB at 3–5 gwei).
-A `mint()` call is ~150–200k gas.
+- **Deployment: 3,806,562 gas.** At the simulated 0.05 gwei that is 0.0001903281 BNB;
+  at realistic BSC gas prices (1–5 gwei) it is **~0.004–0.02 BNB**. A 0.02–0.05 BNB top-up
+  covers deploy + verification + a test mint comfortably.
+- **`mint()` call: ~148k gas** (measured in Foundry tests; ~150k on mainnet with the real
+  Agent ID `balanceOf` call). At 3 gwei that is ~0.00045 BNB per mint.
+- Contract size: 14,386 bytes deployed (under the 24,576-byte limit).
